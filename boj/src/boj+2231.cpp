@@ -16,20 +16,31 @@ int partitionSum(int n){
 }
 
 int main(void){
+  // 입력을 받고
   cin>>n;
+
+  bool hasAnswer = false;
+
   string str = to_string(n);
   int length = str.size();
 
   int minimum = INF;
 
   for(int i = 1 ; i<=n;++i){
-    if()
-    minimum = min(minimum, partitionSum(i)+i);
+    int pSum = partitionSum(i)+i;
+    if(pSum == n){
+      minimum = min(minimum, i);
+      hasAnswer = true;
+    }
+      
   }
 
   int answer = minimum;
-
-  cout<< answer <<endl;
+  
+  if(!hasAnswer)
+    cout<<0<<endl;
+  else 
+    cout<< answer <<endl;
 
   return 0;
 }
