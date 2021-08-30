@@ -1,5 +1,4 @@
 
-/*
 설명 :
 
 어떤 자연수 N이 있을 때,
@@ -54,55 +53,3 @@ for i=1, i<N,i+=1
 
 각각의 자리를 더하는 알고리즘 
 각각의 자리수를 구하고 그것들을 더함
-*/
-
-#include <iostream>
-#include <string>
-#define INF 987654321 
-using namespace std;
-
-int n;
-
-// 각각의 자릿수의 합을 구하고 그 값을 반환하는 로직
-int partitionSum(int n){
-  int ret = 0;
-  string s = to_string(n);
-  int length = s.size();
-  for(int i = 0 ; i< length;++i){
-    ret += s[i]-'0';
-  }
-  return ret;
-}
-
-int main(void){
-  // 입력을 받고
-  cin>>n;
-
-  // 분해합이 존재하는가?
-  bool hasAnswer = false;
-
-  string str = to_string(n);
-  int length = str.size();
-
-  int minimum = INF;
-
-  // 일일이 분해합을 찾는다.
-  for(int i = 1 ; i<=n;++i){
-    int pSum = partitionSum(i)+i;
-    // 분해합이라면
-    if(pSum == n){
-      minimum = min(minimum, i);
-      hasAnswer = true;
-    }
-      
-  }
-
-  int answer = minimum;
-  
-  if(!hasAnswer)
-    cout<<0<<endl;
-  else 
-    cout<< answer <<endl;
-
-  return 0;
-}
